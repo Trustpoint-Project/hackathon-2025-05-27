@@ -37,13 +37,13 @@
 ## Einrichtung - Client
 
 1. Client Key + Zertifikate erstellen
-    - **Generate Cert** (replace N with 1 or 2 depending on client)**:** `openssl req -newkey rsa:2048 -nodes -keyout httpclientN.key -x509 -days 365 -out httpclientN -subj "/CN=httpclientN" -extensions v3_req -config client_ext.cnf`
+    - **Generate Cert** (replace N with 1 or 2 depending on client)**:** `openssl req -newkey rsa:2048 -nodes -keyout httpclientN.key -x509 -days 365 -out httpclientN.pem -subj "/CN=httpclientN" -extensions v3_req -config client_ext.cnf`
 
 2. Extension (client_ext.cnf) überprüfen
 
 3. Create pkcs12 file
-    - **Create pkcs12** (replace N with 1 or 2)**:** `openssl pkcs12 -export -inkey httpclientN.key -in httpclientN.pem httpclient.p12 -name "httpclientN"`
-    - If asked for password, Use password testing321
+    - **Create pkcs12** (replace N with 1 or 2)**:** `openssl pkcs12 -export -inkey httpclientN.key -in httpclientN.pem -out httpclient.p12 -name "httpclientN"`
+    - If asked for password, use password `testing321`
 
 4. Import in browser (Firefox)
     - settings
@@ -51,4 +51,4 @@
     - click on view certificates
     - click on "Your Certificates"
     - Import pkcs12 FIle (httpclient.p12)
-    - If asked for password, Use password testing321
+    - If asked for password, use password `testing321`
